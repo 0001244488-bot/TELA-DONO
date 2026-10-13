@@ -6,7 +6,7 @@ namespace usúario_e_pets
 {
     public partial class Form1 : Form
     {
-        public string conexaocombanco = ConfiguracaoBanco.ConnectionString;database=petshop_tecnico;uid=root;pwd=piclas@12;";
+        public string conexaocombanco = ConfiguracaoBanco.ConnectionString;
         Form2 TelaCrudDecisao = new Form2();
         
         public Form1()
