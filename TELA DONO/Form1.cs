@@ -2,7 +2,7 @@ namespace TELA_DONO
 {
     public partial class Form1 : Form
     {
-        private readonly DonoJsonRepository _repository = new();
+        private readonly DonoMySqlRepository _repository = new();
         private readonly MaskedTextBox _cpfTextBox = new();
         private readonly TextBox _nomeTextBox = new();
         private readonly TextBox _telefoneTextBox = new();
@@ -16,7 +16,15 @@ namespace TELA_DONO
             InitializeComponent();
             ConfigurarFormulario();
             CriarInterface();
-            AtualizarLista();
+            try
+            {
+                AtualizarLista();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Não foi possível carregar os donos. Verifique a conexão com o MySQL.\n\n" + ex.Message,
+                    "Erro ao conectar", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void ConfigurarFormulario()
@@ -33,7 +41,7 @@ namespace TELA_DONO
         {
             var titulo = new Label
             {
-                Text = "Tela 2 - CRUD de Donos",
+                Text = "Tela 4 - CRUD de Donos",
                 Font = new Font("Segoe UI", 20F, FontStyle.Bold),
                 ForeColor = Color.FromArgb(31, 55, 83),
                 AutoSize = true,
@@ -291,9 +299,9 @@ namespace TELA_DONO
             {
                 MostrarAviso(ex.Message);
             }
-            catch (IOException ex)
+            catch (Exception ex)
             {
-                MessageBox.Show($"Não foi possível salvar os dados: {ex.Message}", "Erro",
+                MessageBox.Show("Erro ao acessar o MySQL: " + ex.Message, "Erro",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
