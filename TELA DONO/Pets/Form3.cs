@@ -15,7 +15,7 @@ namespace usúario_e_pets
     public partial class Form3 : Form
     {
         public int id = 0;
-        public string conexaocombanco = ConfiguracaoBanco.ConnectionString;database=petshop_tecnico;uid=root;pwd=piclas@12;";
+        public string conexaocombanco = ConfiguracaoBanco.ConnectionString;
         Form2 CrudPet = new Form2();
 
         private int idPetSelecionado = 0;
